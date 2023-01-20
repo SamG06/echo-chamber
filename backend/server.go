@@ -54,7 +54,7 @@ func returnHomePage (w http.ResponseWriter, r *http.Request){
 
 	fmt.Printf("%s", http.MethodGet)
 
-	x := Test{Post: "Hello World", Minutes: 9}
+	x := Test{Post: "This is an Echo Post.", Minutes: 9}
 	
 	json.NewEncoder(w).Encode(x)
 }
