@@ -37,11 +37,14 @@ func multiplexer(w http.ResponseWriter, r *http.Request){
 }
 
 var index = regexp.MustCompile(`^/$`)
+var getPost = regexp.MustCompile(`^/get-post$`)
 
 func getHandler(w http.ResponseWriter, r *http.Request){
 	switch {
 	case index.MatchString(r.URL.Path):
 		returnHomePage(w, r)
+	case getPost.MatchString(r.URL.Path):
+		getEchoPost(w, r)
 	default:
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("404"))
@@ -50,11 +53,13 @@ func getHandler(w http.ResponseWriter, r *http.Request){
 
 
 func returnHomePage (w http.ResponseWriter, r *http.Request){
+	w.Write([]byte("This is the home route of the echo post API"))	
+}
+
+func getEchoPost (w http.ResponseWriter, r *http.Request){
 	setupForJson(&w)
 
-	fmt.Printf("%s", http.MethodGet)
+	x := Test{Post: "This is a real Echo Post", Minutes: 809823093}
 
-	x := Test{Post: "This is an Echo Post.", Minutes: 9}
-	
 	json.NewEncoder(w).Encode(x)
 }
