@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "modern-normalize": "^1.1.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
