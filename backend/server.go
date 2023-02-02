@@ -59,7 +59,8 @@ func returnHomePage (w http.ResponseWriter, r *http.Request){
 func getEchoPost (w http.ResponseWriter, r *http.Request){
 	setupForJson(&w)
 
-	x := Test{Post: "This is a real Echo Post", Minutes: 809823093}
+	x := Test{Post: "This is a real Echo Post", Minutes: 8}
 
 	json.NewEncoder(w).Encode(x)
 }
+
