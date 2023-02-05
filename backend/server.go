@@ -1,6 +1,7 @@
 package main
 
 import (
+	"echo_chamber/database"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -14,6 +15,7 @@ type Test struct {
 }
 
 func main() {
+	database.SetupDatabase()
 	http.HandleFunc("/", multiplexer)
 
 	fmt.Print("Starting server at port 3000\n")
